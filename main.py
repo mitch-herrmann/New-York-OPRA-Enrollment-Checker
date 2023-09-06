@@ -47,15 +47,15 @@ def loopNPIs(npi):
 def save_data():
     df = pd.DataFrame.from_dict(data)
     df.drop_duplicates(subset="NPI", keep="first", inplace=True)
-    df.to_csv("passed_NPIs.csv", index=False)
+    df.to_csv("passed_NPIs.csv", index=False) 
 
     with open('failed_NPIs.txt', 'w') as f:
         for item in failed_NPIs:
             f.write(f"{item}\n")
 
 
-file = pd.read_csv("NPIs.csv")
-raw_NPIs = file['Attend Prov NPI'].tolist()
+file = pd.read_csv("NPIs.csv") #Enter the filepath of the .csv file that contains your NPIs. 
+raw_NPIs = file['Attend Prov NPI'].tolist() #'Attend Prod NPI' should be changed to the name of the column that contains the NPI numbers in your file.
 
 for each in raw_NPIs:
     loopNPIs(each)
